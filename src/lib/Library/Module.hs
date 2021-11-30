@@ -1,18 +1,26 @@
 module Library.Module
-  ( Record (..)
+  ( Address (..)
+  , Name (..)
+  , Record (..)
+  , Zip (..)
+  , Zip4 (..)
   , formatZip
   )
   where
 
+newtype Name = Name { getName :: String } deriving Show
+newtype Address = Address { getAddress :: String } deriving Show
+newtype Zip = Zip { getZip :: Int } deriving Show
+newtype Zip4 = Zip4 { getZip4 :: Int } deriving Show
 
 data Record = Record
-  { rName :: String
-  , rAddress :: String
-  , rZip :: Int
-  , rZipPlus4 :: Int
+  { rName :: Name
+  , rAddress :: Address
+  , rZip :: Zip
+  , rZipPlus4 :: Zip4
   }
   deriving Show
 
 
-formatZip :: Int -> Int -> String
-formatZip zip' zip4 = (show zip') <> "-" <> (show zip4)
+formatZip :: Zip -> Zip4 -> String
+formatZip (Zip zip') (Zip4 zip4) = (show zip') <> "-" <> (show zip4)

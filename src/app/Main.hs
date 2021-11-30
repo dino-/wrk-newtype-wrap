@@ -1,9 +1,20 @@
-import Library.Module ( Record (..), formatZip )
+import Library.Module
+  ( Record (..)
+  , Name (..), Address (..)
+  , Zip (..), Zip4 (..)
+  , formatZip )
 
 
 main :: IO ()
 main = do
-  let badRecord = Record "123 Alpha St" "Stimpson J Cat" 6789 12345
-  print badRecord
+  let goodRecord = Record
+        (Name "Stimpson J Cat")
+        (Address "123 Alpha St")
+        (Zip 12345)
+        (Zip4 6789)
+  print goodRecord
 
-  print $ formatZip (rZip badRecord) (rZipPlus4 badRecord)
+  print $ getName . rName $ goodRecord
+  print $ getZip . rZip $ goodRecord
+
+  print $ formatZip (rZip goodRecord) (rZipPlus4 goodRecord)
