@@ -1,9 +1,9 @@
--- It is generally a good idea to keep all your business logic in your library
--- and only use it in the executable. Doing so allows others to use what you
--- wrote in their libraries.
-import Example ( example )
+import Library.Module ( Record (..), formatZip )
 
 
 main :: IO ()
 main = do
-  example
+  let badRecord = Record "123 Alpha St" "Stimpson J Cat" 6789 12345
+  print badRecord
+
+  print $ formatZip (rZip badRecord) (rZipPlus4 badRecord)
