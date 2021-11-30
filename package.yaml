@@ -26,6 +26,7 @@ ghc-options:
 
 dependencies:
 - base >=3 && <5
+- newtype-generics
 
 library:
   source-dirs: src/lib

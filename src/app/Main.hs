@@ -1,3 +1,4 @@
+import Control.Newtype.Generics ( op )
 import Library.Module
   ( Record (..)
   , Name (..), Address (..)
@@ -14,7 +15,7 @@ main = do
         (Zip4 6789)
   print goodRecord
 
-  print $ getName . rName $ goodRecord
-  print $ getZip . rZip $ goodRecord
+  print $ op Name . rName $ goodRecord
+  print $ op Zip . rZip $ goodRecord
 
   print $ formatZip (rZip goodRecord) (rZipPlus4 goodRecord)

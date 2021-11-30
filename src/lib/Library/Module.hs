@@ -1,3 +1,5 @@
+{-# LANGUAGE DeriveGeneric #-}
+
 module Library.Module
   ( Address (..)
   , Name (..)
@@ -8,10 +10,19 @@ module Library.Module
   )
   where
 
-newtype Name = Name { getName :: String } deriving Show
-newtype Address = Address { getAddress :: String } deriving Show
-newtype Zip = Zip { getZip :: Int } deriving Show
-newtype Zip4 = Zip4 { getZip4 :: Int } deriving Show
+import GHC.Generics
+import Control.Newtype.Generics
+
+
+newtype Name = Name String deriving (Generic, Show)
+instance Newtype Name
+
+newtype Address = Address String deriving Show
+
+newtype Zip = Zip Int deriving (Generic, Show)
+instance Newtype Zip
+
+newtype Zip4 = Zip4 Int deriving Show
 
 data Record = Record
   { rName :: Name
