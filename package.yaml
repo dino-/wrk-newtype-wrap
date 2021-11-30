@@ -1,0 +1,76 @@
+name: wrk-newtype-wrap
+version: '1.0'
+# synopsis:
+# description:
+license: ISC
+author: Dino Morelli
+maintainer: dino@ui3.info
+copyright: 2021 Dino Morelli
+category: Unclassified
+extra-source-files:
+- .gitignore
+- package.yaml
+- README.md
+- stack.yaml
+
+github: dino-/wrk-newtype-wrap
+
+ghc-options:
+- -fwarn-tabs
+- -Wall
+- -Wcompat
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wpartial-fields
+- -Wredundant-constraints
+
+default-extensions:
+- BangPatterns
+- DeriveFoldable
+- DeriveFunctor
+- DeriveGeneric
+- DeriveLift
+- DeriveTraversable
+- EmptyCase
+- FlexibleContexts
+- FlexibleInstances
+- GeneralizedNewtypeDeriving
+- InstanceSigs
+- KindSignatures
+- LambdaCase
+- MultiParamTypeClasses
+- MultiWayIf
+- NamedFieldPuns
+- NumericUnderscores
+- OverloadedStrings
+- ScopedTypeVariables
+- StandaloneDeriving
+- TupleSections
+
+dependencies:
+- base >=3 && <5
+
+library:
+  source-dirs: src/lib
+  dependencies: []
+
+executables:
+  wrk-newtype-wrap:
+    source-dirs: src/app
+    main: Main.hs
+    dependencies:
+    - wrk-newtype-wrap
+
+tests:
+  wrk-newtype-wrap-test-suite:
+    source-dirs: src/test
+    main: Main.hs
+    dependencies:
+    - wrk-newtype-wrap
+    - tasty
+    - tasty-hunit
+    - tasty-quickcheck
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
