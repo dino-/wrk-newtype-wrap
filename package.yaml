@@ -60,17 +60,3 @@ executables:
     main: Main.hs
     dependencies:
     - wrk-newtype-wrap
-
-tests:
-  wrk-newtype-wrap-test-suite:
-    source-dirs: src/test
-    main: Main.hs
-    dependencies:
-    - wrk-newtype-wrap
-    - tasty
-    - tasty-hunit
-    - tasty-quickcheck
-    ghc-options:
-    - -rtsopts
-    - -threaded
-    - -with-rtsopts=-N
